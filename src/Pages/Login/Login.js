@@ -1,11 +1,51 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
-    return (
+    const { logIn, setLoading, setUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
+    // console.log(from);
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
 
+        logIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                form.reset();
+                if (user.emailVerified) {
+                    setUser(user);
+                    navigate(from, { replace: true });
+                }
+                else {
+                    toast.error('Email is not verified')
+                }
+
+            })
+            .catch(error => {
+                setError(error.message);
+                console.error(error);
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+
+    }
+
+    return (
         <div className='flex justify-center items-center pt-8 mb-20'>
-            <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100'>
+            <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <div className='mb-8 text-center'>
                     <h1 className='my-3 text-4xl font-bold'>Sign in</h1>
                     <p className='text-sm text-gray-400'>
@@ -13,7 +53,7 @@ const Login = () => {
                     </p>
                 </div>
                 <form
-
+                    onSubmit={handleLogin}
                     noValidate=''
                     action=''
                     className='space-y-6 ng-untouched ng-pristine ng-valid'
@@ -48,7 +88,7 @@ const Login = () => {
                         </div>
                     </div>
                     <div className='text-red-600'>
-
+                        {error}
                     </div>
                     <div>
                         <button
