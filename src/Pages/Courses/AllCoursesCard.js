@@ -2,10 +2,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AllCoursesCard = ({ course }) => {
-    const { _id } = course;
+    const { _id, title, details, thumbnail_url } = course;
     return (
-        <div>
-            <Link to={`/courses/coursesdetails/${_id}`}><button >Card</button></Link>
+        <div className="card card-compact w-60 bg-gray-900 shadow-xl">
+            <figure><img className="" src={thumbnail_url} alt="" /></figure>
+            <div className="card-body">
+                <h2 className="card-title font-bold">{title}</h2>
+                <p className='text-slate-500'>
+                    {
+                        details.length > 200 ?
+                            <>{details.slice(0, 150) + '....'}<Link to={`/courses/coursesdetails/${_id}`}>See more</Link></>
+                            :
+                            details
+                    }
+                </p>
+                <div className="card-actions w-100 justify-center">
+                    <Link className='btn btn-primary w-full bg-indigo-600 text-white' to={`/courses/coursesdetails/${_id}`}><button className="" >Details</button></Link>
+                </div>
+            </div>
         </div>
     );
 };

@@ -54,7 +54,8 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile)
     }
 
-    const loginPopup = provider => {
+    const popupLogin = provider => {
+        setLoading(true);
         return signInWithPopup(auth, provider);
     }
 
@@ -70,7 +71,7 @@ const AuthProvider = ({ children }) => {
         logOut,
         emailVerification,
         updateUserInfo,
-        loginPopup,
+        popupLogin,
     };
 
     return (

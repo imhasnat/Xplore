@@ -4,10 +4,9 @@ import AllCoursesCard from './AllCoursesCard';
 
 const CoursesList = () => {
     const courses = useLoaderData();
-    console.log(courses);
+    // console.log(courses);
     return (
-        <div>
-            <h1>Card</h1>
+        <div className='sm:w-6/12  md:w-11/12 mx-auto grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center'>
             {
                 courses.map(course =>
                     <AllCoursesCard
