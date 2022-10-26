@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Product
+                                Courses
                             </a>
                         </li>
                         <li>
@@ -24,7 +25,7 @@ const Navbar = () => {
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Features
+                                Blog
                             </a>
                         </li>
                         <li>
@@ -34,7 +35,7 @@ const Navbar = () => {
                                 title="Product pricing"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Pricing
+                                FAQ
                             </a>
                         </li>
                     </ul>
@@ -65,6 +66,13 @@ const Navbar = () => {
                     </a>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
                         <li>
+                            <div className="flex flex-col items-center justify-center">
+                                <div className="flex space-x-5">
+                                    <img alt="" className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
+                                </div>
+                            </div>
+                        </li>
+                        <li>
                             <a
                                 href="/"
                                 aria-label="About us"
@@ -75,24 +83,24 @@ const Navbar = () => {
                             </a>
                         </li>
                         <li>
-                            <a
-                                href="/"
+                            <Link
+                                to="/login"
                                 aria-label="Sign in"
                                 title="Sign in"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
                                 Sign in
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
-                                href="/"
+                            <Link
+                                to="/register"
                                 aria-label="Sign up"
                                 title="Sign up"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
                                 Sign up
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     <div className="lg:hidden">
@@ -196,6 +204,13 @@ const Navbar = () => {
                                                     Pricing
                                                 </a>
                                             </li>
+                                            {/* <li>
+                                                <div className="flex flex-col items-center justify-center">
+                                                    <div className="flex space-x-5">
+                                                        <img alt="" className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
+                                                    </div>
+                                                </div>
+                                            </li> */}
                                             <li>
                                                 <a
                                                     href="/"
@@ -207,24 +222,24 @@ const Navbar = () => {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
+                                                <Link
+                                                    to="login"
                                                     aria-label="Sign in"
                                                     title="Sign in"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Sign in
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
+                                                <Link
+                                                    href="/register"
                                                     className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
                                                     aria-label="Sign up"
                                                     title="Sign up"
                                                 >
                                                     Sign up
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </nav>
