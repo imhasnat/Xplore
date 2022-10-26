@@ -11,9 +11,6 @@ const CoursesDetails = () => {
 
     return (
         <div>
-
-            {/* {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>} */}
-
             <div ref={ref} className="max-w-2xl px-6 py-16 mx-auto space-y-12">
                 <article className="space-y-8 dark:bg-gray-800 dark:text-gray-50">
                     <div className="space-y-6">
@@ -36,7 +33,7 @@ const CoursesDetails = () => {
                     </div>
                 </article>
                 <div>
-                    <div className="flex flex-wrap py-6 space-x-2 border-t border-dashed dark:border-gray-400">
+                    {/* <div className="flex flex-wrap py-6 space-x-2 border-t border-dashed dark:border-gray-400">
                         <a rel="noopener noreferrer" href="#" className="px-3 py-1 rounded-sm hover:underline dark:bg-violet-400 dark:text-gray-900">#MambaUI</a>
                         <a rel="noopener noreferrer" href="#" className="px-3 py-1 rounded-sm hover:underline dark:bg-violet-400 dark:text-gray-900">#TailwindCSS</a>
                         <a rel="noopener noreferrer" href="#" className="px-3 py-1 rounded-sm hover:underline dark:bg-violet-400 dark:text-gray-900">#Angular</a>
@@ -54,7 +51,10 @@ const CoursesDetails = () => {
                                 <a rel="noopener noreferrer" href="#" className="hover:underline">Mauris nec urna volutpat, aliquam lectus sit amet</a>
                             </li>
                         </ul>
-                    </div>
+                    </div> */}
+                </div>
+                <div>
+                    <Link to={`/checkout/${_id}`} >Get Premium</Link>
                 </div>
             </div>
         </div>

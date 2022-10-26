@@ -21,7 +21,14 @@ const router = createBrowserRouter([{
         // { path: '/home', element: <Home></Home> },
         { path: '/login', element: <Login></Login> },
         { path: '/register', element: <Register></Register> },
-        { path: '/checkout', element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute> },
+        {
+            path: '/checkout/:id',
+            element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
+            loader: async ({ params }) => {
+                return fetch(`http://localhost:5000/courses/${params.id}`)
+            }
+
+        },
         {
             path: '/courses',
             element: <Courses></Courses>,
