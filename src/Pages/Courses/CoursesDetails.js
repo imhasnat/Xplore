@@ -3,13 +3,18 @@ import { FaFilePdf } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import Pdf from "react-to-pdf";
 
+const ref = React.createRef();
+
 const CoursesDetails = () => {
     const courseDetails = useLoaderData();
     const { _id, title, details, thumbnail_url } = courseDetails;
 
     return (
         <div>
-            <div className="max-w-2xl px-6 py-16 mx-auto space-y-12">
+
+            {/* {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>} */}
+
+            <div ref={ref} className="max-w-2xl px-6 py-16 mx-auto space-y-12">
                 <article className="space-y-8 dark:bg-gray-800 dark:text-gray-50">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-bold md:tracking-tight md:text-5xl">{title}</h1>
@@ -18,8 +23,13 @@ const CoursesDetails = () => {
                                 <img src="https://source.unsplash.com/75x75/?portrait" alt="" className="w-4 h-4 border rounded-full dark:bg-gray-500 dark:border-gray-700" />
                                 <p className="text-sm">Leroy Jenkins • July 19th, 2021</p>
                             </div>
-                            <p className="flex-shrink-0 mt-3 text-lg md:mt-0" title='download pdf'><FaFilePdf></FaFilePdf></p>
+                            <Pdf targetRef={ref} filename="code-example.pdf">
+                                {({ toPdf }) => <button onClick={toPdf} className="flex-shrink-0 mt-3 text-lg md:mt-0" title='download pdf'><FaFilePdf></FaFilePdf></button>}
+                            </Pdf>
                         </div>
+                    </div>
+                    <div>
+                        <img src={thumbnail_url}></img>
                     </div>
                     <div className="dark:text-gray-100">
                         <p>{details}</p>
