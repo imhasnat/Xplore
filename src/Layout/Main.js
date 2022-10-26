@@ -2,13 +2,18 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Footer from '../Pages/Shared/Footer';
 import Navbar from '../Pages/Shared/Navbar';
+import '../Pages/Shared/footer.css'
 
 const Main = () => {
     return (
-        <div>
+        <div className=''>
             <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
+            <div className='my-20'>
+                <Outlet></Outlet>
+            </div>
+            <div className='main'>
+                <Footer></Footer>
+            </div>
         </div>
     );
 };

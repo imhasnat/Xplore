@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
-import { FaUser } from 'react-icons/fa';
+import { RiShieldUserFill } from 'react-icons/ri';
+import icon from '../../assests/icon.png';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
-        <div className="bg-gray-900">
+        <div className="bg-gray-900 ">
             <div className="px-4 py-6 mx-auto lg:py-8 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div className="relative flex items-center justify-between lg:justify-center lg:space-x-16">
                     <ul className="flex items-center hidden space-x-8 lg:flex">
@@ -24,7 +25,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                to="/"
+                                to="/blog"
                                 aria-label="Our product"
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -34,7 +35,17 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link
-                                to="/"
+                                to="/faq"
+                                aria-label="Product pricing"
+                                title="Product pricing"
+                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                            >
+                                FAQ
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/faq"
                                 aria-label="Product pricing"
                                 title="Product pricing"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -43,31 +54,17 @@ const Navbar = () => {
                             </Link>
                         </li>
                     </ul>
-                    <a
-                        href="/"
+                    <Link
+                        to="/"
                         aria-label="Company"
                         title="Company"
                         className="inline-flex items-center"
                     >
-                        <svg
-                            className="w-8 text-teal-accent-400"
-                            viewBox="0 0 24 24"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeMiterlimit="10"
-                            stroke="currentColor"
-                            fill="none"
-                        >
-                            <rect x="3" y="1" width="7" height="12" />
-                            <rect x="3" y="17" width="7" height="6" />
-                            <rect x="14" y="1" width="7" height="6" />
-                            <rect x="14" y="11" width="7" height="12" />
-                        </svg>
+                        <img className='text-white ' src={icon} alt="icon" />
                         <span className="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                            Company
+                            Xplore
                         </span>
-                    </a>
+                    </Link>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
                         <li>
                             <div className="flex flex-col items-center justify-center">
@@ -75,20 +72,18 @@ const Navbar = () => {
                                     {
                                         user?.photoURL ?
 
-                                            <img alt={user?.displayName}
+                                            <img alt={user?.displayName} title={user?.displayName}
                                                 className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
                                                 src={user?.photoURL}
                                                 referrerPolicy="no-referrer"
 
                                             />
                                             :
-                                            <FaUser></FaUser>
+                                            // <FaUser></FaUser>
+                                            <p className='text-3xl '><RiShieldUserFill className='bg-white'></RiShieldUserFill></p>
                                     }
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            {user?.displayName}
                         </li>
                         {
                             user?.uid ?
@@ -96,7 +91,7 @@ const Navbar = () => {
                                     <Link
                                         onClick={logOut}
                                         aria-label="About us"
-                                        title="About us"
+                                        title="logout"
                                         className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                                     >
                                         Logout
@@ -125,7 +120,6 @@ const Navbar = () => {
                                         </Link>
                                     </li>
                                 </>
-
                         }
 
 
@@ -154,35 +148,27 @@ const Navbar = () => {
                         </button>
                         {isMenuOpen && (
                             <div className="absolute top-0 left-0 w-full">
-                                <div className="p-5 bg-white border rounded shadow-sm">
+                                <div className="p-8 bg-white border rounded shadow-sm">
                                     <div className="flex items-center justify-between mb-4">
-                                        <div>
-                                            <a
-                                                href="/"
-                                                aria-label="Company"
-                                                title="Company"
-                                                className="inline-flex items-center"
-                                            >
-                                                <svg
-                                                    className="w-8 text-deep-purple-accent-400"
-                                                    viewBox="0 0 24 24"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    strokeLinecap="round"
-                                                    strokeMiterlimit="10"
-                                                    stroke="currentColor"
-                                                    fill="none"
-                                                >
-                                                    <rect x="3" y="1" width="7" height="12" />
-                                                    <rect x="3" y="17" width="7" height="6" />
-                                                    <rect x="14" y="1" width="7" height="6" />
-                                                    <rect x="14" y="11" width="7" height="12" />
-                                                </svg>
-                                                <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                                    Company
-                                                </span>
-                                            </a>
+
+                                        <div className="flex flex-col items-center justify-center">
+                                            <div className="flex space-x-5">
+                                                {
+                                                    user?.photoURL ?
+
+                                                        <img alt={user?.displayName} title={user?.displayName}
+                                                            className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                                                            src={user?.photoURL}
+                                                            referrerPolicy="no-referrer"
+
+                                                        />
+                                                        :
+                                                        // <FaUser></FaUser>
+                                                        <p className='text-3xl '><RiShieldUserFill className='bg-white'></RiShieldUserFill></p>
+                                                }
+                                            </div>
                                         </div>
+
                                         <div>
                                             <button
                                                 aria-label="Close Menu"
@@ -202,34 +188,34 @@ const Navbar = () => {
                                     <nav>
                                         <ul className="space-y-4">
                                             <li>
-                                                <a
-                                                    href="/"
+                                                <Link
+                                                    to="/courses"
                                                     aria-label="Our product"
-                                                    title="Our product"
+                                                    title="courses"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Product
-                                                </a>
+                                                    Courses
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
+                                                <Link
+                                                    to="/blog"
                                                     aria-label="Our product"
-                                                    title="Our product"
+                                                    title="blog"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Features
-                                                </a>
+                                                    Blog
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
+                                                <Link
+                                                    to="/faq"
                                                     aria-label="Product pricing"
                                                     title="Product pricing"
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Pricing
-                                                </a>
+                                                    FAQ
+                                                </Link>
                                             </li>
                                             {/* <li>
                                                 <div className="flex flex-col items-center justify-center">
@@ -239,35 +225,46 @@ const Navbar = () => {
                                                 </div>
                                             </li> */}
                                             <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="About us"
-                                                    title="About us"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    About us
-                                                </a>
+                                                {
+                                                    user?.uid ?
+
+                                                        <Link
+                                                            onClick={logOut}
+                                                            aria-label="About us"
+                                                            title="About us"
+                                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                        >
+                                                            logout
+                                                        </Link>
+                                                        :
+                                                        <>
+                                                            <ul>
+                                                                <li>
+                                                                    <Link
+                                                                        to="login"
+                                                                        aria-label="Sign in"
+                                                                        title="Sign in"
+                                                                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                                    >
+                                                                        Sign in
+                                                                    </Link>
+                                                                </li>
+                                                                <li>
+                                                                    <Link
+                                                                        to="/register"
+                                                                        className="inline-flex items-center w-full h-12 font-medium tracking-wide text-gray-700 transition duration-200 "
+                                                                        aria-label="Sign up"
+                                                                        title="Sign up"
+                                                                    >
+                                                                        Sign up
+                                                                    </Link>
+                                                                </li>
+                                                            </ul>
+                                                        </>
+                                                }
+
                                             </li>
-                                            <li>
-                                                <Link
-                                                    to="login"
-                                                    aria-label="Sign in"
-                                                    title="Sign in"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    Sign in
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    href="/register"
-                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
-                                                    aria-label="Sign up"
-                                                    title="Sign up"
-                                                >
-                                                    Sign up
-                                                </Link>
-                                            </li>
+
                                         </ul>
                                     </nav>
                                 </div>
