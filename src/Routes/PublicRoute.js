@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import CheckOut from "../Pages/CheckOut/CheckOut";
 import Courses from "../Pages/Courses/Courses";
 import CoursesDetails from "../Pages/Courses/CoursesDetails";
 import CoursesList from "../Pages/Courses/CoursesList";
@@ -8,6 +9,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([{
@@ -19,6 +21,7 @@ const router = createBrowserRouter([{
         // { path: '/home', element: <Home></Home> },
         { path: '/login', element: <Login></Login> },
         { path: '/register', element: <Register></Register> },
+        { path: '/checkout', element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute> },
         {
             path: '/courses',
             element: <Courses></Courses>,
@@ -37,13 +40,13 @@ const router = createBrowserRouter([{
                         return fetch(`http://localhost:5000/courses/${params.id}`)
                     }
                 },
-                // {
-                //     path: '/coursesDetails/:id',
-                //     element: <CoursesDetails></CoursesDetails>,
-                //     loader: async ({ params }) => {
-                //         return fetch(`http://localhost:5000/categories/${params.id}`)
-                //     }
-                // }
+                {
+                    path: '/courses/categories/coursesDetails/:id',
+                    element: <CoursesDetails></CoursesDetails>,
+                    loader: async ({ params }) => {
+                        return fetch(`http://localhost:5000/categories/${params.id}`)
+                    }
+                }
             ]
         }
 

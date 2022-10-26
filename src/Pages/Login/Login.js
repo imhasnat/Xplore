@@ -3,7 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import app from '../../firebase/firebase.config';
+
+const auth = getAuth(app);
 
 const Login = () => {
     const { logIn, setLoading, setUser } = useContext(AuthContext);
@@ -12,7 +15,7 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/';
-    // console.log(from);
+    console.log(from);
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -49,28 +52,31 @@ const Login = () => {
     const githubProvider = new GithubAuthProvider()
 
     const handleGoogleSignIn = () => {
-        loginPopup(googleProvider)
+        // loginPopup(googleProvider)
+        signInWithPopup(auth, googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 setError('');
                 navigate(from, { replace: true });
+
             })
-            .error(error => {
+            .catch(error => {
                 setError(error.message);
                 console.error(error);
             })
     }
 
     const handleGithubSignIn = () => {
-        loginPopup(githubProvider)
+        signInWithPopup(auth, githubProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
                 setError('');
                 navigate(from, { replace: true });
+
             })
-            .error(error => {
+            .catch(error => {
                 setError(error.message);
                 console.error(error);
             })
