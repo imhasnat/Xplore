@@ -1,11 +1,14 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Register = () => {
+    const { createUser, emailVerfication, updateProfileInfo, } = useContext(AuthContext);
     return (
         <div>
-            <h1>register</h1>
+            <h1>Register</h1>
         </div>
     );
 };
 
-export default Register; <h1>register</h1>
+export default Register;

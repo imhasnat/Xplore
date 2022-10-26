@@ -15,33 +15,42 @@ const AuthProvider = ({ children }) => {
     const [theme, setTheme] = useState(true);
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            // if(currentUser === null )
-            setUser(user);
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log('inside effect', currentUser);
+            if (currentUser === null ||
+                currentUser.emailVerified) {
+
+                setUser(currentUser);
+            }
+            setLoading(false);
         })
-        setLoading(false);
         return () => {
             unSubscribe();
         }
-    }, []);
+    }, [])
 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const logIn = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
     const emailVerfication = (email) => {
+        setLoading(true);
         return sendEmailVerification(auth.currentUser)
     }
 
-    const updateProfileInfo = (profile) => {
+    const updateUserInfo = (profile) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, profile)
     }
 
@@ -59,7 +68,7 @@ const AuthProvider = ({ children }) => {
         logIn,
         logOut,
         emailVerfication,
-        updateProfileInfo,
+        updateUserInfo,
         loginWithPopup
     };
 
