@@ -6,7 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { logIn, setLoading, setUser, loginPopup } = useContext(AuthContext);
+    const { logIn, setLoading, setUser } = useContext(AuthContext);
+    const { loginPopup } = useContext(AuthContext)
     const [error, setError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -45,7 +46,7 @@ const Login = () => {
     }
 
     const googleProvider = new GoogleAuthProvider();
-    const githubProvider = new GithubAuthProvider();
+    const githubProvider = new GithubAuthProvider()
 
     const handleGoogleSignIn = () => {
         loginPopup(googleProvider)

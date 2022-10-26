@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <div className="bg-gray-900">
@@ -13,7 +14,7 @@ const Navbar = () => {
                     <ul className="flex items-center hidden space-x-8 lg:flex">
                         <li>
                             <a
-                                href="/"
+                                href="/courses"
                                 aria-label="Our product"
                                 title="Our product"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -71,40 +72,63 @@ const Navbar = () => {
                         <li>
                             <div className="flex flex-col items-center justify-center">
                                 <div className="flex space-x-5">
-                                    <img alt={user.displayName} className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800" src={user.photoURL} referrerPolicy='no-referrer' />
+                                    {
+                                        user?.photoURL ?
+
+                                            <img alt={user?.displayName}
+                                                className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                                                src={user?.photoURL}
+                                                referrerPolicy="no-referrer"
+
+                                            />
+                                            :
+                                            <FaUser></FaUser>
+                                    }
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a
-                                href="/"
-                                aria-label="About us"
-                                title="About us"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                About us
-                            </a>
+                            {user?.displayName}
                         </li>
-                        <li>
-                            <Link
-                                to="/login"
-                                aria-label="Sign in"
-                                title="Sign in"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Sign in
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/register"
-                                aria-label="Sign up"
-                                title="Sign up"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Sign up
-                            </Link>
-                        </li>
+                        {
+                            user?.uid ?
+                                <li>
+                                    <Link
+                                        onClick={logOut}
+                                        aria-label="About us"
+                                        title="About us"
+                                        className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    >
+                                        Logout
+                                    </Link>
+                                </li>
+                                :
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/login"
+                                            aria-label="Sign in"
+                                            title="Sign in"
+                                            className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                        >
+                                            Sign in
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/register"
+                                            aria-label="Sign up"
+                                            title="Sign up"
+                                            className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                        >
+                                            Sign up
+                                        </Link>
+                                    </li>
+                                </>
+
+                        }
+
+
                     </ul>
                     <div className="lg:hidden">
                         <button

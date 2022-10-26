@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    const emailVerfication = (email) => {
+    const emailVerification = () => {
         setLoading(true);
         return sendEmailVerification(auth.currentUser)
     }
@@ -65,11 +65,12 @@ const AuthProvider = ({ children }) => {
         setUser,
         setTheme,
         createUser,
+        setLoading,
         logIn,
         logOut,
-        emailVerfication,
+        emailVerification,
         updateUserInfo,
-        loginPopup
+        loginPopup,
     };
 
     return (
