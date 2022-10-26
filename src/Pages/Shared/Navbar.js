@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Navbar = () => {
+    const { user } = useContext(AuthContext)
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <div className="bg-gray-900">
@@ -68,7 +71,7 @@ const Navbar = () => {
                         <li>
                             <div className="flex flex-col items-center justify-center">
                                 <div className="flex space-x-5">
-                                    <img alt="" className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
+                                    <img alt={user.displayName} className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800" src={user.photoURL} referrerPolicy='no-referrer' />
                                 </div>
                             </div>
                         </li>

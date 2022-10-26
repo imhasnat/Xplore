@@ -3,9 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { logIn, setLoading, setUser } = useContext(AuthContext);
+    const { logIn, setLoading, setUser, loginPopup } = useContext(AuthContext);
     const [error, setError] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
@@ -42,6 +43,38 @@ const Login = () => {
             })
 
     }
+
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        loginPopup(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate(from, { replace: true });
+            })
+            .error(error => {
+                setError(error.message);
+                console.error(error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        loginPopup(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate(from, { replace: true });
+            })
+            .error(error => {
+                setError(error.message);
+                console.error(error);
+            })
+    }
+
 
     return (
         <div className='flex justify-center items-center pt-8 mb-20'>
@@ -112,7 +145,7 @@ const Login = () => {
                     <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
                 </div>
                 <div className='flex justify-center space-x-4'>
-                    <button aria-label='Log in with Google' className='p-3 rounded-sm'>
+                    <button onClick={handleGoogleSignIn} aria-label='Log in with Google' className='p-3 rounded-sm'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 32 32'
@@ -122,7 +155,7 @@ const Login = () => {
                         </svg>
                     </button>
 
-                    <button aria-label='Log in with GitHub' className='p-3 rounded-sm'>
+                    <button onClick={handleGithubSignIn} aria-label='Log in with GitHub' className='p-3 rounded-sm'>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             viewBox='0 0 32 32'
