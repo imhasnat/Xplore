@@ -125,7 +125,7 @@ const Register = () => {
                                 type='password'
                                 name='password'
                                 id='password'
-                                placeholder='*******'
+                                placeholder='Enter Your Password'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900'
                             />
                         </div>

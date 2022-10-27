@@ -1,12 +1,22 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link, useLoaderData } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import Swal from 'sweetalert2';
 
 const CheckOut = () => {
     const { user } = useContext(AuthContext);
     const courseDetails = useLoaderData();
-    const { _id, title, author, price } = courseDetails;
+    const { title, author, price } = courseDetails;
+
+    const checkout = () => {
+        Swal.fire(
+            'Success!',
+            'Your Payment is complete!',
+            'success'
+
+        )
+    }
 
     return (
         <div className='my-44'>
@@ -27,7 +37,7 @@ const CheckOut = () => {
                     <div>
                     </div>
                     <div className='text-center '>
-                        <Link to={`/checkout/${_id}`} ><button className="btn btn-outline btn-primary w-56">CheckOut</button></Link>
+                        <button onClick={checkout} className="btn btn-outline btn-primary w-56">CheckOut</button>
                     </div>
                 </div>
             </div>

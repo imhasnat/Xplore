@@ -22,7 +22,7 @@ const CoursesDetails = () => {
                                 <p className="text-sm">{author.name}</p>
                             </div>
                             <Pdf targetRef={ref} filename="code-example.pdf">
-                                {({ toPdf }) => <button onClick={toPdf} className="flex-shrink-0 mt-3 text-2xl text-red-600 md:mt-0" title='download pdf'><FaFilePdf></FaFilePdf></button>}
+                                {({ toPdf }) => <button onClick={toPdf} className="flex-shrink-0 mt-3 text-3xl text-red-600 md:mt-0" title='download pdf'><FaFilePdf></FaFilePdf></button>}
                             </Pdf>
                         </div>
                     </div>

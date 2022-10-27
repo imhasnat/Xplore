@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const AllCoursesCard = ({ course }) => {
     const { _id, title, details, thumbnail_url } = course;
     return (
-        <div className="card card-compact w-60 bg-white text-gray-500 shadow-xl mb-5">
+        <div className="card card-compact w-60 bg-gray-100  text-gray-900 shadow-xl mb-5">
             <figure><img className="" src={thumbnail_url} alt="" /></figure>
             <div className="card-body">
                 <h2 className="card-title font-bold">{title}</h2>
