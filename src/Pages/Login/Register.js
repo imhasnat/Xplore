@@ -34,7 +34,7 @@ const Register = () => {
                 // toast.warn('Check email to verfiy', {
                 //     position: toast.POSITION.TOP_CENTER, autoClose: 700
                 // });
-                navigate('/login');
+                navigate('/courses');
             })
             .catch(error => {
                 console.error(error);
