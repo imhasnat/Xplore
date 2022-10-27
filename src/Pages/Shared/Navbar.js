@@ -89,18 +89,21 @@ const Navbar = () => {
                     <ul className="flex items-center hidden space-x-8 lg:flex">
 
                         {
-                            user?.photoURL ?
+                            user?.uid ?
                                 <li>
-                                    <img alt={user?.displayName} title={user?.displayName}
-                                        className="w-10 h-10 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
-                                        src={user?.photoURL}
-                                        referrerPolicy="no-referrer"
-
-                                    />
+                                    {
+                                        user?.photoURL ?
+                                            <img alt={user?.displayName} title={user?.displayName}
+                                                className="w-10 h-10 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                                                src={user?.photoURL}
+                                                referrerPolicy="no-referrer"
+                                            />
+                                            :
+                                            <p className='text-white text-xl' title={user?.displayName}><FaUser></FaUser></p>
+                                    }
                                 </li>
                                 :
-                                <p className='text-white text-xl' title={user?.displayName}><FaUser></FaUser></p>
-
+                                ''
                         }
 
 
@@ -172,18 +175,23 @@ const Navbar = () => {
 
                                         <div className="flex flex-col items-center justify-center">
                                             <div className="flex space-x-5">
-                                                {
-                                                    user?.photoURL ?
-
-                                                        <img alt={user?.displayName} title={user?.displayName}
-                                                            className="w-12 h-12 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
-                                                            src={user?.photoURL}
-                                                            referrerPolicy="no-referrer"
-
-                                                        />
-                                                        :
-                                                        <p className='text-gray-900 text-xl' title={user?.displayName}><FaUser></FaUser></p>
-                                                }
+                                            {
+                                                user?.uid ?
+                                                    <>
+                                                        {
+                                                            user?.photoURL ?
+                                                                <img alt={user?.displayName} title={user?.displayName}
+                                                                    className="w-10 h-10 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                                                                    src={user?.photoURL}
+                                                                    referrerPolicy="no-referrer"
+                                                                />
+                                                                :
+                                                                <p className='text-white text-xl' title={user?.displayName}><FaUser></FaUser></p>
+                                                        }
+                                                    </>
+                                                    :
+                                                    ''
+                                            }
                                             </div>
                                         </div>
 

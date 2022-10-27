@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
-    const { createUser, updateUserInfo, emailVerification, setLoading } = useContext(AuthContext);
+    const { createUser, updateUserInfo, emailVerification, setLoading, setUser } = useContext(AuthContext);
 
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -27,6 +27,7 @@ const Register = () => {
                 setError('');
                 form.reset();
                 profileUpdate(name, photoUrl);
+                setUser(user)
                 // verifyEmail();
                 toast.success('Registration Complete', {
                     position: toast.POSITION.TOP_CENTER, autoClose: 500
@@ -61,14 +62,14 @@ const Register = () => {
             })
     }
 
-    const verifyEmail = () => {
-        emailVerification()
-            .then(() => { })
-            .catch(error => {
-                toast.error(error.message);
-                console.error(error);
-            })
-    }
+    // const verifyEmail = () => {
+    //     emailVerification()
+    //         .then(() => { })
+    //         .catch(error => {
+    //             toast.error(error.message);
+    //             console.error(error);
+    //         })
+    // }
 
     return (
         <div className='flex justify-center items-center mb-20'>
