@@ -15,7 +15,7 @@ const CoursesDetails = () => {
                 <article className="space-y-8 dark:text-gray-700">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-bold md:tracking-tight md:text-5xl">{title}</h1>
-                        <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center dark:text-gray-400">
+                        <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center dark:text-gray-700">
                             <div className="flex items-center md:space-x-2">
                                 <p className='font-semibold text-md'>Instructor: </p>
                                 <img src="https://source.unsplash.com/75x75/?portrait" alt="" className="w-4 h-4 border rounded-full dark:bg-gray-500 dark:border-gray-700" />
