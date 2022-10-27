@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className="w-11/12 md:w-9/12 mx-auto my-28 ">
+        <div className="w-11/12 md:w-9/12 mx-auto my-28 overflow-hidden">
             <div className="container max-w-4xl p-10 md:p-20 mx-auto rounded-lg shadow-sm bg-gray-100 text-gray-800">
                 <div className="flex items-center justify-between">
                     <span className="text-sm dark:text-gray-400">October 27, 2022</span>
