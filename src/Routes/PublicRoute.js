@@ -1,6 +1,7 @@
 import { async } from "@firebase/util";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 import Blog from "../Pages/Blog/Blog";
 import CheckOut from "../Pages/CheckOut/CheckOut";
 import Courses from "../Pages/Courses/Courses";
@@ -25,6 +26,7 @@ const router = createBrowserRouter([{
         { path: '/register', element: <Register></Register> },
         { path: '/blog', element: <Blog></Blog> },
         { path: '/faq', element: <FAQ></FAQ> },
+        { path: '/aboutUs', element: <AboutUs></AboutUs> },
         {
             path: '/checkout/:id',
             element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,

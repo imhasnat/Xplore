@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="footer footer-center p-10 bg-gray-900 text-gray-100 overflow-hidden">
             <div className="grid grid-flow-col gap-4">
-                <Link to={'/about us'} className="link link-hover">About us</Link>
+                <Link to={'/aboutUs'} className="link link-hover">About us</Link>
                 <Link to={''} className="link link-hover">Contact</Link>
                 <Link to={'/courses'} className="link link-hover">Courses</Link>
                 <Link to={'/blog'} className="link link-hover">Blog</Link>
