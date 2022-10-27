@@ -12,7 +12,7 @@ const CoursesDetails = () => {
     return (
         <div>
             <div ref={ref} className="max-w-2xl px-6 py-2 mx-auto space-y-12">
-                <article className="space-y-8 dark:bg-gray-800 dark:text-gray-50">
+                <article className="space-y-8 dark:text-gray-50">
                     <div className="space-y-6">
                         <h1 className="text-4xl font-bold md:tracking-tight md:text-5xl">{title}</h1>
                         <div className="flex flex-col items-start justify-between w-full md:flex-row md:items-center dark:text-gray-400">
@@ -36,7 +36,7 @@ const CoursesDetails = () => {
                 <div>
                 </div>
                 <div className='text-center '>
-                    <Link to={`/checkout/${_id}`} ><button className="btn btn-outline btn-primary">Get Premium Access</button></Link>
+                    <Link to={`/checkout/${_id}`} ><button className="btn btn-primary bg-indigo-600 text-white">Get Premium Access</button></Link>
                 </div>
             </div>
         </div>

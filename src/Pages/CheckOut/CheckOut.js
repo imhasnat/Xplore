@@ -23,7 +23,7 @@ const CheckOut = () => {
             <div className='mx-auto p-10 bg-gray-100 text-gray-800 rounded-lg w-6/12 border border-gray-900'>
                 <h1 className='text-center text-4xl font-bold mb-7'>Payment</h1>
                 <div className="max-w-2xl px-6 py-2 mx-auto space-y-12">
-                    <article className="space-y-3 dark:bg-gray-800 dark:text-gray-200">
+                    <article className="space-y-3">
                         <div className="">
                             <h1 className="text-2xl md:text-2xl"> <span className='font-bold'>Course Name: </span> {title}</h1>
                         </div>

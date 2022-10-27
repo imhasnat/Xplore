@@ -27,13 +27,13 @@ const Register = () => {
                 setError('');
                 form.reset();
                 profileUpdate(name, photoUrl);
-                verifyEmail();
+                // verifyEmail();
                 toast.success('Registration Complete', {
                     position: toast.POSITION.TOP_CENTER, autoClose: 500
                 });
-                toast.warn('Check email to verfiy', {
-                    position: toast.POSITION.TOP_CENTER, autoClose: 700
-                });
+                // toast.warn('Check email to verfiy', {
+                //     position: toast.POSITION.TOP_CENTER, autoClose: 700
+                // });
                 navigate('/login');
             })
             .catch(error => {
@@ -118,6 +118,7 @@ const Register = () => {
                                 type='email'
                                 name='email'
                                 id='email'
+                                required
                                 placeholder='Enter Your Email Here'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
@@ -133,6 +134,7 @@ const Register = () => {
                                 type='password'
                                 name='password'
                                 id='password'
+                                required
                                 placeholder='Enter Your Password'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900'
                             />

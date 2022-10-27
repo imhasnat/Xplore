@@ -24,15 +24,15 @@ const Login = () => {
                 const user = result.user;
                 setError('');
                 form.reset();
-                if (user.emailVerified) {
-                    setUser(user);
-                    navigate(from, { replace: true });
-                }
-                else {
-                    toast.error('Email is not verified', {
-                        position: toast.POSITION.TOP_CENTER, autoClose: 500
-                    });
-                }
+                setUser(user);
+                navigate(from, { replace: true });
+                // if (user.emailVerified) {
+                // }
+                // else {
+                //     toast.error('Email is not verified', {
+                //         position: toast.POSITION.TOP_CENTER, autoClose: 500
+                //     });
+                // }
 
             })
             .catch(error => {
@@ -54,10 +54,10 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setError('');
-                if (user.emailVerified) {
-                    // setUser(user);
-                    navigate(from, { replace: true });
-                }
+                navigate(from, { replace: true });
+                // if (user.emailVerified) {
+                //     // setUser(user);
+                // }
 
             })
             .catch(error => {
@@ -77,14 +77,14 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setError('');
-                if (user.emailVerified) {
-                    navigate(from, { replace: true });
-                }
-                else {
-                    toast.error('Email is not verified', {
-                        position: toast.POSITION.TOP_CENTER, autoClose: 500
-                    });
-                }
+                navigate(from, { replace: true });
+                // if (user.emailVerified) {
+                // }
+                // else {
+                //     toast.error('Email is not verified', {
+                //         position: toast.POSITION.TOP_CENTER, autoClose: 500
+                //     });
+                // }
 
             })
             .catch(error => {
@@ -140,6 +140,7 @@ const Login = () => {
                                 type='email'
                                 name='email'
                                 id='email'
+                                required
                                 placeholder='Enter Your Email Here'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:border-gray-900 bg-gray-200 text-gray-900'
                                 data-temp-mail-org='0'
@@ -155,6 +156,7 @@ const Login = () => {
                                 type='password'
                                 name='password'
                                 id='password'
+                                required
                                 placeholder='Enter Your Password'
                                 className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:border-gray-900 text-gray-900'
                             />

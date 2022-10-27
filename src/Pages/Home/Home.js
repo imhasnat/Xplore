@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <section className=" dark:bg-gray-800 dark:text-gray-100">
+        <section className=" dark:text-gray-100">
             <div className="container mx-auto flex flex-col items-center px-4 py-16 text-center md:py-32 md:px-10 lg:px-32 xl:max-w-3xl">
                 <h1 className="text-3xl font-bold leading-none sm:text-4xl">For the best return on
                     <span className="dark:text-violet-400"> your money, pour your purse</span> into your head.

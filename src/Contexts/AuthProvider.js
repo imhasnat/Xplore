@@ -17,11 +17,11 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             // console.log('inside effect', currentUser);
-            if (currentUser === null ||
-                currentUser.emailVerified) {
+            // if (currentUser === null ||
+            //     currentUser.emailVerified) {
 
-                setUser(currentUser);
-            }
+            //     }
+            setUser(currentUser);
             setLoading(false);
         })
         return () => {

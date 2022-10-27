@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import icon from '../../assests/icon.png';
 import './darkMode.css';
+import { FaUser } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logOut, theme, setTheme } = useContext(AuthContext);
@@ -98,7 +99,7 @@ const Navbar = () => {
                                     />
                                 </li>
                                 :
-                                ''
+                                <p className='text-white text-xl' title={user?.displayName}><FaUser></FaUser></p>
 
                         }
 
@@ -181,7 +182,7 @@ const Navbar = () => {
 
                                                         />
                                                         :
-                                                        ''
+                                                        <p className='text-gray-900 text-xl' title={user?.displayName}><FaUser></FaUser></p>
                                                 }
                                             </div>
                                         </div>
