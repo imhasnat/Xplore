@@ -80,7 +80,7 @@ const Navbar = () => {
                                             />
                                             :
                                             // <FaUser></FaUser>
-                                            <p className='text-3xl '><RiShieldUserFill className='bg-white'></RiShieldUserFill></p>
+                                            <p className='text-2xl '><RiShieldUserFill className='text-white'></RiShieldUserFill></p>
                                     }
                                 </div>
                             </div>

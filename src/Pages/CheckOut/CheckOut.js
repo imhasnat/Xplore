@@ -1,13 +1,36 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
 
 const CheckOut = () => {
+    const { user } = useContext(AuthContext);
     const courseDetails = useLoaderData();
-    const { _id, title, details, thumbnail_url } = courseDetails;
+    const { _id, title, author, price } = courseDetails;
 
     return (
-        <div>
-            <h1>CheckOut: {title}</h1>
+        <div className='my-44'>
+            <div className='mx-auto p-10 bg-gray-100 rounded-lg w-6/12 border border-gray-900'>
+                <h1 className='text-center text-4xl font-bold mb-7'>Payment</h1>
+                <div className="max-w-2xl px-6 py-2 mx-auto space-y-12">
+                    <article className="space-y-3 dark:bg-gray-800 dark:text-gray-50">
+                        <div className="">
+                            <h1 className="text-2xl md:text-2xl"> <span className='font-bold'>Course Name: </span> {title}</h1>
+                        </div>
+                        <div>
+                            <p><span className='font-semibold'>Price: </span>{price}</p>
+                            <p><span className='font-semibold'>Instructor: </span>{author.name} </p>
+                            <p> <span className='font-semibold'>Student: </span>{user.displayName}
+                            </p>
+                        </div>
+                    </article>
+                    <div>
+                    </div>
+                    <div className='text-center '>
+                        <Link to={`/checkout/${_id}`} ><button className="btn btn-outline btn-primary w-56">CheckOut</button></Link>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

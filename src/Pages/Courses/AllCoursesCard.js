@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const AllCoursesCard = ({ course }) => {
     const { _id, title, details, thumbnail_url } = course;
     return (
-        <div className="card card-compact w-60 bg-gray-900 shadow-xl">
+        <div className="card card-compact w-60 bg-white text-gray-500 shadow-xl mb-5">
             <figure><img className="" src={thumbnail_url} alt="" /></figure>
             <div className="card-body">
                 <h2 className="card-title font-bold">{title}</h2>
@@ -17,7 +17,7 @@ const AllCoursesCard = ({ course }) => {
                     }
                 </p>
                 <div className="card-actions w-100 justify-center">
-                    <Link className='btn btn-primary w-full bg-indigo-600 text-white' to={`/courses/coursesdetails/${_id}`}><button className="" >Details</button></Link>
+                    <Link className='btn btn-primary btn-outline w-full text-white' to={`/courses/coursesdetails/${_id}`}><button className="" >Details</button></Link>
                 </div>
             </div>
         </div>

@@ -15,11 +15,10 @@ const Categories = () => {
     }, [])
 
     return (
-        <div>
-            <h1>All categories: {categories.length}</h1>
+        <div className='overflow-hidden'>
             {
                 categories.map(category =>
-                    <p key={category.id}><Link to={`/courses/categories/coursesDetails/${category.id}`}> <button className="btn btn-wide">{category.name}</button></Link ></p>)
+                    <p key={category.id}><Link to={`/courses/categories/coursesDetails/${category.id}`}> <button className="btn btn-primary w-full mt-3 bg-indigo-600 text-white">{category.name}</button></Link ></p>)
             }
         </div>
     );
