@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,6 +9,7 @@ const Register = () => {
     const { createUser, updateUserInfo, emailVerification, setLoading } = useContext(AuthContext);
 
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleRegister = event => {
         event.preventDefault();
@@ -27,13 +28,20 @@ const Register = () => {
                 form.reset();
                 profileUpdate(name, photoUrl);
                 verifyEmail();
-                toast.success('Registration Complete');
-                toast.success('Check email to verfiy');
+                toast.success('Registration Complete', {
+                    position: toast.POSITION.TOP_CENTER, autoClose: 500
+                });
+                toast.warn('Check email to verfiy', {
+                    position: toast.POSITION.TOP_CENTER, autoClose: 700
+                });
+                navigate('/login');
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message);
-                toast.error(error.message)
+                toast.error(error.message, {
+                    position: toast.POSITION.TOP_CENTER, autoClose: 700
+                });
             })
             .finally(() => {
                 setLoading(false)
@@ -63,8 +71,8 @@ const Register = () => {
     }
 
     return (
-        <div className='flex justify-center items-center pt-8 mb-20'>
-            <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+        <div className='flex justify-center items-center mb-20'>
+            <div className='flex flex-col max-w-md p-2 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <div className='mb-8 text-center'>
                     <h1 className='my-3 text-4xl font-bold'>Register</h1>
                     <p className='text-sm text-gray-400'>Create a new account</p>

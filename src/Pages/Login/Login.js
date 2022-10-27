@@ -22,7 +22,6 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 setError('');
                 form.reset();
                 if (user.emailVerified) {
@@ -30,7 +29,9 @@ const Login = () => {
                     navigate(from, { replace: true });
                 }
                 else {
-                    toast.error('Email is not verified')
+                    toast.error('Email is not verified', {
+                        position: toast.POSITION.TOP_CENTER, autoClose: 500
+                    });
                 }
 
             })
@@ -61,7 +62,9 @@ const Login = () => {
             })
             .catch(error => {
                 setError(error.message);
-                console.error(error);
+                toast.error(error.message, {
+                    position: toast.POSITION.TOP_CENTER, autoClose: 500
+                });
             })
             .finally(() => {
                 setLoading(false)
@@ -78,13 +81,18 @@ const Login = () => {
                     navigate(from, { replace: true });
                 }
                 else {
-                    toast.error('Email is not verify')
+                    toast.error('Email is not verify', {
+                        position: toast.POSITION.TOP_CENTER, autoClose: 500
+                    });
                 }
 
             })
             .catch(error => {
                 setError(error.message);
-                console.error(error);
+                console.log(error.message);
+                toast.error(error.message, {
+                    position: toast.POSITION.TOP_CENTER, autoClose: 500
+                });
             })
     }
 

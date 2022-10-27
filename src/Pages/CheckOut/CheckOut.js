@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import Swal from 'sweetalert2';
 
@@ -37,7 +37,7 @@ const CheckOut = () => {
                     <div>
                     </div>
                     <div className='text-center '>
-                        <button onClick={checkout} className="btn btn-outline btn-primary w-56">CheckOut</button>
+                        <Link to={'/courses'}><button onClick={checkout} className="btn btn-outline btn-primary w-56">CheckOut</button></Link>
                     </div>
                 </div>
             </div>
