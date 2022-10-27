@@ -1,13 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import icon from '../../assests/icon.png';
+import './darkMode.css';
 
 const Navbar = () => {
     const { user, logOut, theme, setTheme } = useContext(AuthContext);
     console.log(theme);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggle = () => {
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    }
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
 
     return (
         <div className="bg-gray-900 ">
@@ -46,13 +59,13 @@ const Navbar = () => {
                         </li>
                         <li className='flex items-center'>
                             <button
-                                onClick={() => setTheme(!theme)}
+                                onClick={toggle}
                                 aria-label="Product pricing"
                                 title="Product pricing"
                                 className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
                                 {
-                                    !theme ?
+                                    theme === 'dark' ?
                                         <svg className=" fill-current w-6 h-6 text-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" /></svg>
 
                                         :

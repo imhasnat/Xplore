@@ -12,7 +12,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [theme, setTheme] = useState(true);
+    const [theme, setTheme] = useState('light');
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
