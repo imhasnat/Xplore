@@ -29,7 +29,7 @@ const router = createBrowserRouter([{
             path: '/checkout/:id',
             element: <PrivateRoute><CheckOut></CheckOut></PrivateRoute>,
             loader: async ({ params }) => {
-                return fetch(`http://localhost:5000/courses/${params.id}`)
+                return fetch(`https://learning-platform-server-ten.vercel.app/courses/${params.id}`)
             }
 
         },
@@ -41,21 +41,21 @@ const router = createBrowserRouter([{
                     path: '/courses',
                     element: <CoursesList></CoursesList>,
                     loader: () => {
-                        return fetch('http://localhost:5000/courses')
+                        return fetch('https://learning-platform-server-ten.vercel.app/courses')
                     }
                 },
                 {
                     path: '/courses/coursesdetails/:id',
                     element: <CoursesDetails></CoursesDetails>,
                     loader: async ({ params }) => {
-                        return fetch(`http://localhost:5000/courses/${params.id}`)
+                        return fetch(`https://learning-platform-server-ten.vercel.app/courses/${params.id}`)
                     }
                 },
                 {
                     path: '/courses/categories/coursesDetails/:id',
                     element: <CoursesDetails></CoursesDetails>,
                     loader: async ({ params }) => {
-                        return fetch(`http://localhost:5000/categories/${params.id}`)
+                        return fetch(`https://learning-platform-server-ten.vercel.app/categories/${params.id}`)
                     }
                 }
             ]

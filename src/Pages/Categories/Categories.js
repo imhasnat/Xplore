@@ -9,7 +9,7 @@ const Categories = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
+        fetch('https://learning-platform-server-ten.vercel.app/categories')
             .then(res => res.json())
             .then(data => setCategories(data))
     }, [])
@@ -29,7 +29,7 @@ export default Categories;
 // const [categories, setCategories] = useState([]);
 //     console.log(categories);
 //     useEffect(() => {
-//         fetch('http://localhost:5000/categories')
+//         fetch('https://learning-platform-server-ten.vercel.app/categories')
 //             .then(res => res.json())
 //             .then(data => setCategories(data));
 //     }, [])
